@@ -14,7 +14,7 @@ function handleError(err) {
 
 gulp.task('js', function() {
     return gulp.src('js/*.js')
-    .pipe(concat('ng-markdown.min.js'))
+    .pipe(concat('ng-datetime.min.js'))
     .pipe(ngmin())
     .pipe(uglify({mangle: false}))
     .pipe(gulp.dest('dist'));
