@@ -6,7 +6,12 @@ angular.module('ngDatetime', [])
 		return {
 			restrict: 'AE',
 			replace : true,
-			template: '<input type="text" value="">',
+			template:
+				'<div class="input-append date form_datetime">' +
+				'   <input type="text" value="" readonly>' +
+				'   <span class="add-on"><i class="icon-remove"></i></span>' +
+				'	<span class="add-on"><i class="icon-th"></i></span>' +
+				'</div>',
 			scope   : {
 				value: '='
 			},
