@@ -13,20 +13,21 @@ function handleError(err) {
 }
 
 gulp.task('js', function() {
-    return gulp.src('js/*.js')
-    .pipe(concat('ng-datetime.min.js'))
-    .pipe(ngmin())
-    .pipe(uglify({mangle: false}))
-    .pipe(gulp.dest('dist'));
+	return gulp.src('js/*.js')
+		.pipe(concat('ng-datetime.min.js'))
+		.pipe(ngmin())
+		.pipe(uglify({mangle: false}))
+		.pipe(gulp.dest('dist'));
 });
 
 gulp.task('css', function() {
     return gulp.src('css/*.scss')
-    .pipe(sass({compass: true}))
-    .on('error', handleError)
-    .pipe(cssmin())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist'));
+		.pipe(sass({compass: true}))
+		.on('error', handleError)
+		.pipe(cssmin())
+		.pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest('dist'));
+
 });
 
 gulp.task('watch', function() {
