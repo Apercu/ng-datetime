@@ -13,7 +13,10 @@ function handleError(err) {
 }
 
 gulp.task('js', function() {
-	return gulp.src('js/*.js')
+	return gulp.src(['js/transition.js',
+					'js/collapse.js',
+					'js/moment.min.js',
+					'js/*.js'])
 		.pipe(concat('ng-datetime.min.js'))
 		.pipe(ngmin())
 		.pipe(uglify({mangle: false}))

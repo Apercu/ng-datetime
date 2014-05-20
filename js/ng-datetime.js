@@ -6,36 +6,41 @@ angular.module('ngDatetime', [])
 		return {
 			restrict: 'AE',
 			replace : true,
-			template:
-			'<div class="well rounded-left">' +
-				'<div class="input-append date">' +
-					'<span class="add-on">' +
-					'<i data-time-icon="icon-clock" data-date-icon="icon-calendar"></i>' +
-					'</span>' +
-					'<input data-format="dd/MM/yyyy hh:mm" type="text"></input>' +
-				'</div>' +
-			'</div>',
+			template: '<input type="text" class="form-control">',
 			scope   : {
-				value: '='
+				date: '='
 			},
 			link    : function (scope, element) {
 
-				$('.well > div').datetimepicker({
-					format: 'dd/MM/yyyy hh:mm',
+				$(element[0]).datetimepicker({
+					defaultDate:moment(),
 					todayHighlight: true,
-					pickSeconds: false
+					language: 'fr',
+					minuteStepping: 15,
+					pickSeconds: false,
+					useCurrent: true,
+					icons : {
+						time: 'icon-clock',
+						date: 'icon-calendar',
+						up: 'icon-arrow-up4',
+						down: 'icon-arrow-down5'
+					}
 				})
-				.on('changeDate', function (e) {
+				.on('dp.change', function (e) {
+					console.log(e);
 					scope.$apply(function(scope) {
 						scope.value = e.localDate;
 					});
+				})
+				.on('dp.hide', function (e) {
+					$('.bootstrap-datetimepicker-widget').removeClass('picker-open');
 				});
 
-				var date = $('.well > div').data('datetimepicker');
-				date.setLocalDate(new Date());
+				var date = $(element[0]).data('DateTimePicker');
+				date.setDate(new Date());
 
-				scope.$watch('value', function (newVal, oldVal) {
-					date.setLocalDate(newVal);
+				scope.$watch('date', function (newVal, oldVal) {
+					date.setDate(newVal);
 				});
 
 				scope.$on('$destroy', function() {
