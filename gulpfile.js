@@ -25,11 +25,9 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-    return gulp.src('css/*.scss')
-		.pipe(sass({compass: true}))
-		.on('error', handleError)
+    return gulp.src('css/*.css')
 		.pipe(cssmin())
-		.pipe(rename({suffix: '.min'}))
+		.pipe(concat('ng-datetime.min.css'))
 		.pipe(gulp.dest('dist'));
 
 });
