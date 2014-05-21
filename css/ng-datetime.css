@@ -1,0 +1,7 @@
+.datepicker-months table td, .datepicker-years table td {
+	padding-left: 20px !important;
+}
+
+.bootstrap-datetimepicker-widget .picker-switch .btn {
+	padding: 10px;
+}

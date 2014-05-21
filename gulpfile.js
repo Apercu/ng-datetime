@@ -34,7 +34,7 @@ gulp.task('css', function() {
 
 gulp.task('watch', function() {
     gulp.watch('js/*.js', ['js']);
-    gulp.watch('css/*.scss', ['css']);
+    gulp.watch('css/*', ['css']);
 });
 
 gulp.task('default', ['js', 'css', 'watch']);

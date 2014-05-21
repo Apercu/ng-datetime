@@ -6,14 +6,14 @@ angular.module('ngDatetime', [])
 		return {
 			restrict: 'AE',
 			replace : true,
-			template: '<input type="text" class="form-control">',
+			template: '<input type="text" class="ng-datetime">',
 			scope   : {
 				date: '='
 			},
 			link    : function (scope, element) {
 
 				$(element[0]).datetimepicker({
-					defaultDate:moment(),
+					defaultDate: moment(),
 					todayHighlight: true,
 					language: 'fr',
 					minuteStepping: 15,
@@ -27,10 +27,11 @@ angular.module('ngDatetime', [])
 					}
 				})
 				.on('dp.change', function (e) {
-					console.log(e);
-					scope.$apply(function(scope) {
-						scope.date = e.localDate;
-					});
+					if (!scope.$root.$$phase) {
+						scope.$apply(function(scope) {
+							scope.date = e.date;
+						});
+					}
 				})
 				.on('dp.hide', function (e) {
 					$('.bootstrap-datetimepicker-widget').removeClass('picker-open');
@@ -39,7 +40,9 @@ angular.module('ngDatetime', [])
 				var date = $(element[0]).data('DateTimePicker');
 
 				scope.$watch('date', function (newVal, oldVal) {
-					date.setDate(newVal);
+					if (newVal) {
+						date.setDate(newVal);
+					}
 				});
 
 				scope.$on('$destroy', function() {

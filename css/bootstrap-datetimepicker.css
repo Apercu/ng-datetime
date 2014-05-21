@@ -98,7 +98,9 @@
   text-align: center;
   width: 20px;
   height: 20px;
-  border-radius: 4px;
+}
+.bootstrap-datetimepicker-widget td.day {
+	padding-top: 8px;
 }
 .bootstrap-datetimepicker-widget td.day:hover,
 .bootstrap-datetimepicker-widget td.hour:hover,
@@ -118,15 +120,16 @@
   content: '';
   display: inline-block;
   border-left: 7px solid transparent;
-  border-bottom: 7px solid #428bca;
+  border-bottom: 7px solid #2980b9;
   border-top-color: rgba(0, 0, 0, 0.2);
+	padding-top: 8px;
   position: absolute;
   bottom: 4px;
   right: 4px;
 }
 .bootstrap-datetimepicker-widget td.active,
 .bootstrap-datetimepicker-widget td.active:hover {
-  background-color: #428bca;
+  background-color: #2980b9;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
