@@ -25,7 +25,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-    return gulp.src('css/*.css')
+    return gulp.src(['css/bootstrap.css', 'css/*.css'])
 		.pipe(cssmin())
 		.pipe(concat('ng-datetime.min.css'))
 		.pipe(gulp.dest('dist'));
