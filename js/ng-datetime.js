@@ -29,7 +29,7 @@ angular.module('ngDatetime', [])
 				.on('dp.change', function (e) {
 					console.log(e);
 					scope.$apply(function(scope) {
-						scope.value = e.localDate;
+						scope.date = e.localDate;
 					});
 				})
 				.on('dp.hide', function (e) {
@@ -37,7 +37,6 @@ angular.module('ngDatetime', [])
 				});
 
 				var date = $(element[0]).data('DateTimePicker');
-				date.setDate(new Date());
 
 				scope.$watch('date', function (newVal, oldVal) {
 					date.setDate(newVal);
