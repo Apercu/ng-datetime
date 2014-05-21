@@ -13,7 +13,7 @@ angular.module('ngDatetime', [])
 			link    : function (scope, element) {
 
 				$(element[0]).datetimepicker({
-					defaultDate: moment(),
+					defaultDate: moment().seconds(0).millisecond(0),
 					todayHighlight: true,
 					language: 'fr',
 					minuteStepping: 15,
@@ -38,6 +38,7 @@ angular.module('ngDatetime', [])
 				});
 
 				var date = $(element[0]).data('DateTimePicker');
+				scope.date = date.getDate();
 
 				scope.$watch('date', function (newVal, oldVal) {
 					if (newVal) {

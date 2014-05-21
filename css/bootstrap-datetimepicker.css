@@ -150,10 +150,8 @@
   float: left;
   margin: 2px;
   cursor: pointer;
-  border-radius: 4px;
 }
 .bootstrap-datetimepicker-widget td span:hover {
-  background: #eeeeee;
 }
 .bootstrap-datetimepicker-widget td span.active {
   background-color: #428bca;
