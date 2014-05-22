@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngDatetime', [])
-	.directive('ngDatetime', function () {
+	.directive('ngDatetime', function ($timeout) {
 
 		return {
 			restrict: 'AE',
@@ -28,7 +28,7 @@ angular.module('ngDatetime', [])
 				})
 				.on('dp.change', function (e) {
 					if (!scope.$root.$$phase) {
-						scope.$apply(function(scope) {
+						scope.$apply(function() {
 							scope.date = e.date;
 						});
 					}
@@ -44,6 +44,11 @@ angular.module('ngDatetime', [])
 					if (newVal) {
 						date.setDate(newVal);
 					}
+				});
+
+				scope.$on('showDatetime', function() {
+					date.show();
+					$('.bootstrap-datetimepicker-widget').show();
 				});
 
 				scope.$on('$destroy', function() {
